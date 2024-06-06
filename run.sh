@@ -7,6 +7,8 @@ certbot certonly \
     --agree-tos \
     --email $EMAIL \
     --dns-azure-config /var/certbot/config/azure.ini \
+    --key-type rsa \
+    --rsa-key-size 2048 \
     -d $DOMAIN 
 #Make the keyvault secret name safe
 SECRET_NAME=$(echo $DOMAIN | sed 's/\./-/g')
