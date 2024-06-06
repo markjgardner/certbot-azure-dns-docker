@@ -18,7 +18,7 @@ param workloadProfileName string = 'Consumption'
 param replicaRetryLimit	int = 1
 
 @description('Specifies the maximum number of seconds a Container Apps job replica is allowed to run.')
-param replicaTimeout	int = 60
+param replicaTimeout int = 60
 
 @description('Specifies the container environment variables.')
 param env array = [
@@ -35,7 +35,7 @@ param env array = [
 ]
 
 @description('Specifies the container image.')
-param containerImage	string
+param containerImage string
 
 @description('Specifies the container name.')
 param containerName	string = 'main'

@@ -4,6 +4,5 @@ RUN pip3 install certbot certbot-dns-azure azure-cli
 ENV DOMAIN=example.com
 ENV EMAIL=admin@example.com
 ENV KEYVAULT=example-keyvault
-COPY run.sh /root/run.sh
-RUN chmod +x /root/run.sh
+COPY --chmod=755 run.sh /root/run.sh
 ENTRYPOINT [ "/bin/sh", "/root/run.sh" ]
