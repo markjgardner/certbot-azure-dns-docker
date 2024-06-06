@@ -24,5 +24,5 @@ az login --identity
 az keyvault certificate import \
     --vault-name $KEYVAULT \
     --name $SECRET_NAME \
-    --file /etc/letsencrypt/live/$DOMAIN/combined.pem \
+    --file /etc/letsencrypt/live/$DOMAIN/cert.pfx \
     --password $PFX_PASSWORD 
