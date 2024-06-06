@@ -40,6 +40,9 @@ param containerImage string
 @description('Specifies the container name.')
 param containerName	string = 'main'
 
+@description('Specifies the volume to use for storing config.')
+param volumeName	string = 'config'
+
 @description('Specifies the Required CPU in cores, e.g. 0.5 for the first Azure Container Apps Job. Specify a decimal value as a string. For example, specify 0.5 for 1/2 core.')
 param cpu string = '0.25'
 
@@ -73,6 +76,19 @@ resource job 'Microsoft.App/jobs@2023-04-01-preview' = {
             cpu: json(cpu)
             memory: memory
           }
+          volumeMounts: [
+            {
+              mountPath: '/var/certbot/config'
+              volumeName: 'config'
+            }
+          ]
+        }
+      ]
+      volumes: [
+        {
+          name: 'config'
+          storageType: 'AzureFile'
+          storageName: volumeName
         }
       ]
     }
